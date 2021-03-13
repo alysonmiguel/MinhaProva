@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MinhaProva</string>
+    <string name="button1">Button1</string>
+    <string name="button2">Button2</string>
+    <string name="button3">Button3</string>
+    <string name="button4">Button4</string>
+    <string name="Hello1">Hello World 1 !</string>
+    <string name="Hello2">Hello World 2 !</string>
+    <string name="texto">Escreva algo</string>
+    <string name="ok">OK</string>
+    <string name="bemVindo">Bem-vindo</string>
+    <string name="otimo">Ótimo</string>
+    <string name="proximo">Fica para a próxima</string>
+</resources>
