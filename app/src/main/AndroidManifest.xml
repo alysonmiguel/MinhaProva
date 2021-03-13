@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MinhaProva">
-        <activity android:name=".ActivityAcao2"></activity>
+        <activity android:name=".ActivityAcao3"></activity>
+        <activity android:name=".ActivityAcao2" />
         <activity android:name=".ActivityAcao1" />
         <activity android:name=".MainActivity">
             <intent-filter>

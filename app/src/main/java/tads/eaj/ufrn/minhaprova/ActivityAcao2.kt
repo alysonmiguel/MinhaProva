@@ -34,7 +34,7 @@ class ActivityAcao2 : AppCompatActivity() {
                 db.insert(l)
 
                 var intent = Intent()
-                intent.putExtra("texto", "cadastrado")
+                intent.putExtra("texto", "Cadastrado")
                 setResult(Activity.RESULT_OK, intent)
                 finish()
             }else{

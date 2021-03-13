@@ -96,4 +96,31 @@ class LivroDBOpener  (context : Context) : SQLiteOpenHelper(context,
         }
     }
 
+    fun findAll(): ArrayList<Livro>{
+        var banco:SQLiteDatabase = readableDatabase
+        try{
+
+            val cursor:Cursor = banco.query(LivroContrato.LivroEntry.TABLE_NAME, null, null, null, null, null, null, null)
+
+            var listaLivros = ArrayList<Livro>()
+
+            while( cursor.moveToNext()){
+                var livro = Livro()
+
+                livro.id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
+                livro.nome = cursor.getString(cursor.getColumnIndex(LivroContrato.LivroEntry.NOME))
+                livro.autor = cursor.getString(cursor.getColumnIndex(LivroContrato.LivroEntry.AUTOR))
+                livro.ano = cursor.getInt(cursor.getColumnIndex(LivroContrato.LivroEntry.ANO))
+                livro.nota = cursor.getFloat(cursor.getColumnIndex(LivroContrato.LivroEntry.NOTA))
+
+                listaLivros.add(livro)
+            }
+
+            return listaLivros
+
+        }finally {
+            banco.close()
+        }
+    }
+
 }

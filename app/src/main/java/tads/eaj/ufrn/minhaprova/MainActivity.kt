@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
         }
 
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -52,6 +51,11 @@ class MainActivity : AppCompatActivity() {
         binding.button3.setOnClickListener {
             var intent = Intent(this, ActivityAcao2::class.java)
             startActivityForResult(intent, CODE_3)
+        }
+
+        binding.button4.setOnClickListener {
+            var intent = Intent(this, ActivityAcao3::class.java)
+            startActivity(intent)
         }
 
     }
@@ -81,10 +85,6 @@ class MainActivity : AppCompatActivity() {
                             viewModel.text2 = texto.toString()
                             binding.text2.text = texto
                         }
-                        Activity.RESULT_CANCELED->{
-                            Snackbar.make(binding.mainlayout, "\t\t\t\t Cancelado \t\t\t\t  ¯\\_( ͡❛ ͜ʖ ͡❛)_/¯ ", Snackbar.LENGTH_LONG).show()
-                        }
-
                     }
             }
         }
