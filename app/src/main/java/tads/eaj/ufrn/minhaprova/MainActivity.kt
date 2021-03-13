@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             CODE_3->{
-                    when(resultCode){
-                        Activity.RESULT_OK->{
-                            val param = data?.extras
-                            val texto = param?.getString("texto")
-                            viewModel.text2 = texto.toString()
-                            binding.text2.text = texto
-                        }
+                when(resultCode){
+                    Activity.RESULT_OK->{
+                        val param = data?.extras
+                        val texto = param?.getString("texto")
+                        viewModel.text2 = texto.toString()
+                        binding.text2.text = texto
                     }
+                }
             }
         }
     }
