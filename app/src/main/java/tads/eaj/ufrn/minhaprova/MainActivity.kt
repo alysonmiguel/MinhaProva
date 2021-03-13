@@ -10,18 +10,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import tads.eaj.ufrn.minhaprova.databinding.ActivityMainBinding
+import tads.eaj.ufrn.minhaprova.sqllite.LivroDBOpener
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    lateinit var viewModel: MainViewModel
+    lateinit var viewmodel: MainViewModel
 
     val CODE_1 = 1
     val CODE_3 = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        // Juguei necessário para exibir a mensagem "Bem-vindo" só uma vez
         var settings = getSharedPreferences("prefs", MODE_PRIVATE)
         var flag = settings.getBoolean("flag", true)
 
@@ -33,10 +34,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewmodel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        binding.text1.text = viewModel.text1
-        binding.text2.text = viewModel.text2
+        // Iniciar os text com os dados do viewmodel
+        binding.text1.text = viewmodel.text1
+        binding.text2.text = viewmodel.text2
 
         binding.button1.setOnClickListener {
             var intent = Intent(this, ActivityAcao1::class.java)
@@ -63,12 +65,13 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         when(requestCode){
+//            Saber qual activity está respondendo
             CODE_1->{
                 when(resultCode){
                     Activity.RESULT_OK->{
                         val param = data?.extras
                         val texto = param?.getString("texto")
-                        viewModel.text1 = texto.toString()
+                        viewmodel.text1 = texto.toString()
                         binding.text1.text = texto
                     }
                     Activity.RESULT_CANCELED->{
@@ -82,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                     Activity.RESULT_OK->{
                         val param = data?.extras
                         val texto = param?.getString("texto")
-                        viewModel.text2 = texto.toString()
+                        viewmodel.text2 = texto.toString()
                         binding.text2.text = texto
                     }
                 }

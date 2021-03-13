@@ -44,6 +44,7 @@ class ActivityAcao3 : AppCompatActivity() {
         binding.buttonProximo.setOnClickListener {
 
             var livro = db.findById(++i)
+//            Atualiza os textView
             binding.textViewTitulo.text = "Titulo: ${livro.nome}"
             binding.textViewAutor.text = "Autor: ${livro.autor}"
             binding.textViewAno.text = "Ano: ${livro.ano}"
